@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,8 @@
 		E505F7502303F20000B4FDF1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E505F74E2303F20000B4FDF1 /* Main.storyboard */; };
 		E505F7522303F20400B4FDF1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E505F7512303F20400B4FDF1 /* Assets.xcassets */; };
 		E505F7552303F20400B4FDF1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E505F7532303F20400B4FDF1 /* LaunchScreen.storyboard */; };
+		E523F616230402A50099B9DF /* labelCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E523F614230402A50099B9DF /* labelCollectionViewCell.swift */; };
+		E523F617230402A50099B9DF /* labelCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E523F615230402A50099B9DF /* labelCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +27,8 @@
 		E505F7512303F20400B4FDF1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E505F7542303F20400B4FDF1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E505F7562303F20400B4FDF1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E523F614230402A50099B9DF /* labelCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = labelCollectionViewCell.swift; sourceTree = "<group>"; };
+		E523F615230402A50099B9DF /* labelCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = labelCollectionViewCell.xib; sourceTree = "<group>"; };
 		F81189E6A57B790848F8A92E /* Pods-DummyIGListKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DummyIGListKit.debug.xcconfig"; path = "Target Support Files/Pods-DummyIGListKit/Pods-DummyIGListKit.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -54,7 +58,6 @@
 				F81189E6A57B790848F8A92E /* Pods-DummyIGListKit.debug.xcconfig */,
 				7442BBFD391AE33D064319B3 /* Pods-DummyIGListKit.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -85,6 +88,8 @@
 				E505F7512303F20400B4FDF1 /* Assets.xcassets */,
 				E505F7532303F20400B4FDF1 /* LaunchScreen.storyboard */,
 				E505F7562303F20400B4FDF1 /* Info.plist */,
+				E523F614230402A50099B9DF /* labelCollectionViewCell.swift */,
+				E523F615230402A50099B9DF /* labelCollectionViewCell.xib */,
 			);
 			path = DummyIGListKit;
 			sourceTree = "<group>";
@@ -152,6 +157,7 @@
 				E505F7552303F20400B4FDF1 /* LaunchScreen.storyboard in Resources */,
 				E505F7522303F20400B4FDF1 /* Assets.xcassets in Resources */,
 				E505F7502303F20000B4FDF1 /* Main.storyboard in Resources */,
+				E523F617230402A50099B9DF /* labelCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -204,6 +210,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E523F616230402A50099B9DF /* labelCollectionViewCell.swift in Sources */,
 				E505F74D2303F20000B4FDF1 /* ViewController.swift in Sources */,
 				E505F74B2303F20000B4FDF1 /* AppDelegate.swift in Sources */,
 			);
