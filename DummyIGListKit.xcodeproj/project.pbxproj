@@ -19,6 +19,9 @@
 		E505F76623041A7B00B4FDF1 /* IgListKitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E505F76523041A7B00B4FDF1 /* IgListKitController.swift */; };
 		E505F7692304201100B4FDF1 /* NamaNamaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E505F7682304201100B4FDF1 /* NamaNamaModel.swift */; };
 		E505F76B2304237C00B4FDF1 /* NamaNamaSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E505F76A2304237C00B4FDF1 /* NamaNamaSectionController.swift */; };
+		E505F775230438AA00B4FDF1 /* SwiftKitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E505F774230438AA00B4FDF1 /* SwiftKitController.swift */; };
+		E505F7772304397200B4FDF1 /* SwiftKitNamaNamaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E505F7762304397200B4FDF1 /* SwiftKitNamaNamaModel.swift */; };
+		E505F77923043A1800B4FDF1 /* SwiftKitSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E505F77823043A1800B4FDF1 /* SwiftKitSectionController.swift */; };
 		E523F616230402A50099B9DF /* labelCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E523F614230402A50099B9DF /* labelCollectionViewCell.swift */; };
 		E523F617230402A50099B9DF /* labelCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E523F615230402A50099B9DF /* labelCollectionViewCell.xib */; };
 		E523F619230440D30099B9DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E523F618230440D30099B9DF /* Assets.xcassets */; };
@@ -40,6 +43,9 @@
 		E505F76523041A7B00B4FDF1 /* IgListKitController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IgListKitController.swift; sourceTree = "<group>"; };
 		E505F7682304201100B4FDF1 /* NamaNamaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NamaNamaModel.swift; sourceTree = "<group>"; };
 		E505F76A2304237C00B4FDF1 /* NamaNamaSectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NamaNamaSectionController.swift; sourceTree = "<group>"; };
+		E505F774230438AA00B4FDF1 /* SwiftKitController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftKitController.swift; sourceTree = "<group>"; };
+		E505F7762304397200B4FDF1 /* SwiftKitNamaNamaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftKitNamaNamaModel.swift; sourceTree = "<group>"; };
+		E505F77823043A1800B4FDF1 /* SwiftKitSectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftKitSectionController.swift; sourceTree = "<group>"; };
 		E523F614230402A50099B9DF /* labelCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = labelCollectionViewCell.swift; sourceTree = "<group>"; };
 		E523F615230402A50099B9DF /* labelCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = labelCollectionViewCell.xib; sourceTree = "<group>"; };
 		E523F618230440D30099B9DF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -98,7 +104,7 @@
 			children = (
 				E523F618230440D30099B9DF /* Assets.xcassets */,
 				E505F76723041AD800B4FDF1 /* IgListKit */,
-				E505F75C2303F8A000B4FDF1 /* SwiftListKit Punya Ko Sam */,
+				E505F75C2303F8A000B4FDF1 /* SwiftListKit */,
 				E505F74A2303F20000B4FDF1 /* AppDelegate.swift */,
 				E505F74C2303F20000B4FDF1 /* ViewController.swift */,
 				E505F74E2303F20000B4FDF1 /* Main.storyboard */,
@@ -110,15 +116,15 @@
 			path = DummyIGListKit;
 			sourceTree = "<group>";
 		};
-		E505F75C2303F8A000B4FDF1 /* SwiftListKit Punya Ko Sam */ = {
+		E505F75C2303F8A000B4FDF1 /* SwiftListKit */ = {
 			isa = PBXGroup;
 			children = (
-				E505F7602303F8FB00B4FDF1 /* Diffable.swift */,
-				E505F75E2303F8FB00B4FDF1 /* ListCollectionContext+SizeRange.swift */,
-				E505F75D2303F8FB00B4FDF1 /* ListSwiftAdapter.swift */,
-				E505F75F2303F8FB00B4FDF1 /* SectionController.swift */,
+				E505F7732304389000B4FDF1 /* Punya Ko Sam */,
+				E505F774230438AA00B4FDF1 /* SwiftKitController.swift */,
+				E505F7762304397200B4FDF1 /* SwiftKitNamaNamaModel.swift */,
+				E505F77823043A1800B4FDF1 /* SwiftKitSectionController.swift */,
 			);
-			path = "SwiftListKit Punya Ko Sam";
+			path = SwiftListKit;
 			sourceTree = "<group>";
 		};
 		E505F76723041AD800B4FDF1 /* IgListKit */ = {
@@ -129,6 +135,17 @@
 				E505F76A2304237C00B4FDF1 /* NamaNamaSectionController.swift */,
 			);
 			path = IgListKit;
+			sourceTree = "<group>";
+		};
+		E505F7732304389000B4FDF1 /* Punya Ko Sam */ = {
+			isa = PBXGroup;
+			children = (
+				E505F7602303F8FB00B4FDF1 /* Diffable.swift */,
+				E505F75E2303F8FB00B4FDF1 /* ListCollectionContext+SizeRange.swift */,
+				E505F75D2303F8FB00B4FDF1 /* ListSwiftAdapter.swift */,
+				E505F75F2303F8FB00B4FDF1 /* SectionController.swift */,
+			);
+			path = "Punya Ko Sam";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -248,14 +265,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				E523F616230402A50099B9DF /* labelCollectionViewCell.swift in Sources */,
+				E505F77923043A1800B4FDF1 /* SwiftKitSectionController.swift in Sources */,
 				E505F7692304201100B4FDF1 /* NamaNamaModel.swift in Sources */,
 				E505F7642303F8FB00B4FDF1 /* Diffable.swift in Sources */,
 				E505F76B2304237C00B4FDF1 /* NamaNamaSectionController.swift in Sources */,
 				E505F7632303F8FB00B4FDF1 /* SectionController.swift in Sources */,
+				E505F775230438AA00B4FDF1 /* SwiftKitController.swift in Sources */,
 				E505F7622303F8FB00B4FDF1 /* ListCollectionContext+SizeRange.swift in Sources */,
 				E505F76623041A7B00B4FDF1 /* IgListKitController.swift in Sources */,
 				E505F74D2303F20000B4FDF1 /* ViewController.swift in Sources */,
 				E505F7612303F8FB00B4FDF1 /* ListSwiftAdapter.swift in Sources */,
+				E505F7772304397200B4FDF1 /* SwiftKitNamaNamaModel.swift in Sources */,
 				E505F74B2303F20000B4FDF1 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
