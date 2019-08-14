@@ -7,13 +7,16 @@
 //
 
 import Foundation
+import UIKit
 
 struct SwiftKitNamaNamaModel {
     let id = UUID().uuidString
     let namaku: String
+    let image: UIImage
     
-    init(namakuadalah: String) {
+    init(namakuadalah: String, image: UIImage) {
         self.namaku = namakuadalah
+        self.image = image
     }
 }
 

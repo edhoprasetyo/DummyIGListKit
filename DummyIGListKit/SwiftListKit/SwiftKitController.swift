@@ -31,10 +31,10 @@ class SwiftKitController: ASViewController<ASDisplayNode> {
     }()
     
     var dummyData: [SwiftKitNamaNamaModel] = [
-        SwiftKitNamaNamaModel(namakuadalah: "Alviani"),
-        SwiftKitNamaNamaModel(namakuadalah: "Nicole"),
-        SwiftKitNamaNamaModel(namakuadalah: "Bang James"),
-        SwiftKitNamaNamaModel(namakuadalah: "Bang Nabil")
+        SwiftKitNamaNamaModel(namakuadalah: "Alviani", image: #imageLiteral(resourceName: "alviani")),
+        SwiftKitNamaNamaModel(namakuadalah: "Nicole", image: #imageLiteral(resourceName: "nicole")),
+        SwiftKitNamaNamaModel(namakuadalah: "Bang James", image: #imageLiteral(resourceName: "pace")),
+        SwiftKitNamaNamaModel(namakuadalah: "Bang Nabil", image: #imageLiteral(resourceName: "nabil"))
     ]
     
     init() {
@@ -64,11 +64,11 @@ class SwiftKitController: ASViewController<ASDisplayNode> {
     }
     
     func insert(){
-        var moreData: [SwiftKitNamaNamaModel] = [
-            SwiftKitNamaNamaModel(namakuadalah: "Oles"),
-            SwiftKitNamaNamaModel(namakuadalah: "Selo"),
-            SwiftKitNamaNamaModel(namakuadalah: "Olwes"),
-            SwiftKitNamaNamaModel(namakuadalah: "Solwe")
+        let moreData: [SwiftKitNamaNamaModel] = [
+            SwiftKitNamaNamaModel(namakuadalah: "Selo", image: #imageLiteral(resourceName: "oles")),
+            SwiftKitNamaNamaModel(namakuadalah: "Melvina", image: #imageLiteral(resourceName: "melvina")),
+            SwiftKitNamaNamaModel(namakuadalah: "Kristabel", image: #imageLiteral(resourceName: "kristabel")),
+            SwiftKitNamaNamaModel(namakuadalah: "Lovinska", image: #imageLiteral(resourceName: "lovinska"))
         ]
         
         dummyData += moreData
