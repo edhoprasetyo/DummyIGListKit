@@ -20,8 +20,8 @@ class SwiftKitNamaNamaCell: ASCellNode {
     let textNode = ASTextNode()
     let image: ASImageNode = {
         let node = ASImageNode()
-        node.style.preferredSize = CGSize(width: 100, height: 100)
-        node.cornerRadius = 50
+        node.style.preferredSize = CGSize(width: 50, height: 50)
+        node.cornerRadius = 25
         return node
     }()
     
@@ -29,7 +29,7 @@ class SwiftKitNamaNamaCell: ASCellNode {
         super.init()
         style.width = ASDimensionMake("100%")
         automaticallyManagesSubnodes = true
-        textNode.attributedText = NSAttributedString(string: namanama.namaku, attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
+        textNode.attributedText = NSAttributedString(string: namanama.namaku, attributes: [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16)])
         textNode.style.flexGrow = 1
         image.image = namanama.image
     }
