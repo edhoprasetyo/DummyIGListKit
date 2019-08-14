@@ -6,8 +6,9 @@ target 'DummyIGListKit' do
   use_frameworks!
 
   # Pods for DummyIGListKit
-  pod "Texture"
-  pod 'IGListKit'
+  pod "Texture", '2.7'
+  pod 'IGListKit', '3.4.0'
+  pod 'Texture/IGListKit', '2.7'
   pod 'GDPerformanceView-Swift'
 
 end

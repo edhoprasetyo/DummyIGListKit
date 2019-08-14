@@ -2,9 +2,17 @@
 //  ASImageNode.mm
 //  Texture
 //
-//  Copyright (c) Facebook, Inc. and its affiliates.  All rights reserved.
-//  Changes after 4/13/2017 are: Copyright (c) Pinterest, Inc.  All rights reserved.
-//  Licensed under Apache 2.0: http://www.apache.org/licenses/LICENSE-2.0
+//  Copyright (c) 2014-present, Facebook, Inc.  All rights reserved.
+//  This source code is licensed under the BSD-style license found in the
+//  LICENSE file in the /ASDK-Licenses directory of this source tree. An additional
+//  grant of patent rights can be found in the PATENTS file in the same directory.
+//
+//  Modifications to this file made after 4/13/2017 are: Copyright (c) 2017-present,
+//  Pinterest, Inc.  Licensed under the Apache License, Version 2.0 (the "License");
+//  you may not use this file except in compliance with the License.
+//  You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
 //
 
 #import <AsyncDisplayKit/ASImageNode.h>
@@ -17,6 +25,7 @@
 #import <AsyncDisplayKit/ASDisplayNode+FrameworkPrivate.h>
 #import <AsyncDisplayKit/ASDisplayNode+Subclasses.h>
 #import <AsyncDisplayKit/ASDisplayNodeExtras.h>
+#import <AsyncDisplayKit/ASDisplayNode+Beta.h>
 #import <AsyncDisplayKit/ASGraphicsContext.h>
 #import <AsyncDisplayKit/ASLayout.h>
 #import <AsyncDisplayKit/ASTextNode.h>
@@ -216,7 +225,7 @@ typedef void (^ASImageNodeDrawParametersBlock)(ASWeakMapEntry *entry);
 
 - (CGSize)calculateSizeThatFits:(CGSize)constrainedSize
 {
-  const auto image = ASLockedSelf(_image);
+  auto image = ASLockedSelf(_image);
 
   if (image == nil) {
     return [super calculateSizeThatFits:constrainedSize];
@@ -235,7 +244,6 @@ typedef void (^ASImageNodeDrawParametersBlock)(ASWeakMapEntry *entry);
 
 - (void)_locked_setImage:(UIImage *)image
 {
-  DISABLED_ASAssertLocked(__instanceLock__);
   if (ASObjectIsEqual(_image, image)) {
     return;
   }
@@ -250,9 +258,7 @@ typedef void (^ASImageNodeDrawParametersBlock)(ASWeakMapEntry *entry);
     
     // For debugging purposes we don't care about locking for now
     if ([ASImageNode shouldShowImageScalingOverlay] && _debugLabelNode == nil) {
-      // do not use ASPerformBlockOnMainThread here, if it performs the block synchronously it will continue
-      // holding the lock while calling addSubnode.
-      dispatch_async(dispatch_get_main_queue(), ^{
+      ASPerformBlockOnMainThread(^{
         _debugLabelNode = [[ASTextNode alloc] init];
         _debugLabelNode.layerBacked = YES;
         [self addSubnode:_debugLabelNode];
@@ -322,7 +328,7 @@ typedef void (^ASImageNodeDrawParametersBlock)(ASWeakMapEntry *entry);
   return drawParameters;
 }
 
-+ (UIImage *)displayWithParameters:(id<NSObject>)parameter isCancelled:(NS_NOESCAPE asdisplaynode_iscancelled_block_t)isCancelled
++ (UIImage *)displayWithParameters:(id<NSObject>)parameter isCancelled:(asdisplaynode_iscancelled_block_t)isCancelled
 {
   ASImageNodeDrawParameters *drawParameter = (ASImageNodeDrawParameters *)parameter;
 
@@ -432,17 +438,13 @@ typedef void (^ASImageNodeDrawParametersBlock)(ASWeakMapEntry *entry);
 }
 
 static ASWeakMap<ASImageNodeContentsKey *, UIImage *> *cache = nil;
+// Allocate cacheLock on the heap to prevent destruction at app exit (https://github.com/TextureGroup/Texture/issues/136)
+static ASDN::StaticMutex& cacheLock = *new ASDN::StaticMutex;
 
 + (ASWeakMapEntry *)contentsForkey:(ASImageNodeContentsKey *)key drawParameters:(id)drawParameters isCancelled:(asdisplaynode_iscancelled_block_t)isCancelled
 {
-  static dispatch_once_t onceToken;
-  static ASDN::Mutex *cacheLock = nil;
-  dispatch_once(&onceToken, ^{
-    cacheLock = new ASDN::Mutex();
-  });
-  
   {
-    ASDN::MutexLocker l(*cacheLock);
+    ASDN::StaticMutexLocker l(cacheLock);
     if (!cache) {
       cache = [[ASWeakMap alloc] init];
     }
@@ -459,7 +461,7 @@ static ASWeakMap<ASImageNodeContentsKey *, UIImage *> *cache = nil;
   }
 
   {
-    ASDN::MutexLocker l(*cacheLock);
+    ASDN::StaticMutexLocker l(cacheLock);
     return [cache setObject:contents forKey:key];
   }
 }
@@ -536,15 +538,8 @@ static ASWeakMap<ASImageNodeContentsKey *, UIImage *> *cache = nil;
   [super displayDidFinish];
 
   __instanceLock__.lock();
-    UIImage *image = _image;
     void (^displayCompletionBlock)(BOOL canceled) = _displayCompletionBlock;
-    BOOL shouldPerformDisplayCompletionBlock = (image && displayCompletionBlock);
-
-    // Clear the ivar now. The block is retained and will be executed shortly.
-    if (shouldPerformDisplayCompletionBlock) {
-      _displayCompletionBlock = nil;
-    }
-
+    UIImage *image = _image;
     BOOL hasDebugLabel = (_debugLabelNode != nil);
   __instanceLock__.unlock();
 
@@ -566,8 +561,13 @@ static ASWeakMap<ASImageNodeContentsKey *, UIImage *> *cache = nil;
   }
   
   // If we've got a block to perform after displaying, do it.
-  if (shouldPerformDisplayCompletionBlock) {
+  if (image && displayCompletionBlock) {
+
     displayCompletionBlock(NO);
+
+    __instanceLock__.lock();
+      _displayCompletionBlock = nil;
+    __instanceLock__.unlock();
   }
 }
 
@@ -595,9 +595,10 @@ static ASWeakMap<ASImageNodeContentsKey *, UIImage *> *cache = nil;
 - (void)clearContents
 {
   [super clearContents];
-  
-  ASDN::MutexLocker l(__instanceLock__);
-  _weakCacheEntry = nil;  // release contents from the cache.
+    
+  __instanceLock__.lock();
+    _weakCacheEntry = nil;  // release contents from the cache.
+  __instanceLock__.unlock();
 }
 
 #pragma mark - Cropping
@@ -731,7 +732,7 @@ static ASWeakMap<ASImageNodeContentsKey *, UIImage *> *cache = nil;
 
 #pragma mark - Extras
 
-asimagenode_modification_block_t ASImageNodeRoundBorderModificationBlock(CGFloat borderWidth, UIColor *borderColor)
+extern asimagenode_modification_block_t ASImageNodeRoundBorderModificationBlock(CGFloat borderWidth, UIColor *borderColor)
 {
   return ^(UIImage *originalImage) {
     ASGraphicsBeginImageContextWithOptions(originalImage.size, NO, originalImage.scale);
@@ -754,7 +755,7 @@ asimagenode_modification_block_t ASImageNodeRoundBorderModificationBlock(CGFloat
   };
 }
 
-asimagenode_modification_block_t ASImageNodeTintColorModificationBlock(UIColor *color)
+extern asimagenode_modification_block_t ASImageNodeTintColorModificationBlock(UIColor *color)
 {
   return ^(UIImage *originalImage) {
     ASGraphicsBeginImageContextWithOptions(originalImage.size, NO, originalImage.scale);

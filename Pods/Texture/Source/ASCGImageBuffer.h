@@ -2,8 +2,12 @@
 //  ASCGImageBuffer.h
 //  Texture
 //
-//  Copyright (c) Pinterest, Inc.  All rights reserved.
-//  Licensed under Apache 2.0: http://www.apache.org/licenses/LICENSE-2.0
+//  Copyright (c) 2018-present, Pinterest, Inc.  All rights reserved.
+//  Licensed under the Apache License, Version 2.0 (the "License");
+//  you may not use this file except in compliance with the License.
+//  You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
 //
 
 #import <Foundation/Foundation.h>
@@ -21,7 +25,7 @@ AS_SUBCLASSING_RESTRICTED
 @property (readonly) void *mutableBytes NS_RETURNS_INNER_POINTER;
 
 /// Don't do any drawing or call any methods after calling this.
-- (CGDataProviderRef)createDataProviderAndInvalidate CF_RETURNS_RETAINED;
+- (CGDataProviderRef)createDataProviderAndInvalidate;
 
 @end
 
