@@ -11,12 +11,17 @@ import AsyncDisplayKit
 class NamaNamaSectionController: ListSectionController {
     var namanama: NamaNamaModel?
     
+    internal override init() {
+        super.init()
+        inset = UIEdgeInsets(top: 0, left: 0, bottom: 8, right: 0)
+    }
+    
     override func numberOfItems() -> Int {
         return 1
     }
     
     override func sizeForItem(at index: Int) -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.width, height: 51)
+        return CGSize(width: UIScreen.main.bounds.width, height: 100)
     }
     
     override func cellForItem(at index: Int) -> UICollectionViewCell {
@@ -24,6 +29,7 @@ class NamaNamaSectionController: ListSectionController {
         
         if let cell = cell as? labelCollectionViewCell {
             cell.labeled.text = namanama?.namaku
+            cell.imageView.image = namanama?.image
             return cell
         } else {
             return UICollectionViewCell()

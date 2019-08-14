@@ -15,12 +15,12 @@ class IgListKitController: UIViewController {
     lazy var adapter: ListAdapter = {
        ListAdapter(updater: ListAdapterUpdater(), viewController: self)
     }()
-    
+
     var dummyData: [NamaNamaModel] = [
-        NamaNamaModel(namakuadalah: "Alviani"),
-        NamaNamaModel(namakuadalah: "Nicole"),
-        NamaNamaModel(namakuadalah: "Bang James"),
-        NamaNamaModel(namakuadalah: "Bang Nabil")
+        NamaNamaModel(namakuadalah: "Alviani", image: #imageLiteral(resourceName: "alviani")),
+        NamaNamaModel(namakuadalah: "Nicole", image: #imageLiteral(resourceName: "nicole")),
+        NamaNamaModel(namakuadalah: "Bang James", image: #imageLiteral(resourceName: "pace")),
+        NamaNamaModel(namakuadalah: "Bang Nabil", image: #imageLiteral(resourceName: "nabil"))
     ]
     
     override func viewDidLoad() {
@@ -36,10 +36,10 @@ class IgListKitController: UIViewController {
     
     func insertdata(){
         let moreData: [NamaNamaModel] = [
-            NamaNamaModel(namakuadalah: "Selo"),
-            NamaNamaModel(namakuadalah: "Oles"),
-            NamaNamaModel(namakuadalah: "Olwes"),
-            NamaNamaModel(namakuadalah: "Solwe")
+            NamaNamaModel(namakuadalah: "Selo", image: #imageLiteral(resourceName: "oles")),
+            NamaNamaModel(namakuadalah: "Melvina", image: #imageLiteral(resourceName: "melvina")),
+            NamaNamaModel(namakuadalah: "Kristabel", image: #imageLiteral(resourceName: "kristabel")),
+            NamaNamaModel(namakuadalah: "Lovinska", image: #imageLiteral(resourceName: "lovinska"))
         ]
         
         dummyData += moreData
@@ -56,7 +56,7 @@ class IgListKitController: UIViewController {
     }
     
     func updateData(){
-        dummyData[2] = NamaNamaModel(namakuadalah: "Pace")
+        dummyData[2] = NamaNamaModel(namakuadalah: "Pace", image: #imageLiteral(resourceName: "pace"))
     }
 }
 
