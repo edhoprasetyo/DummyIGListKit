@@ -18,13 +18,12 @@
 		E505F7642303F8FB00B4FDF1 /* Diffable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E505F7602303F8FB00B4FDF1 /* Diffable.swift */; };
 		E505F76623041A7B00B4FDF1 /* IgListKitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E505F76523041A7B00B4FDF1 /* IgListKitController.swift */; };
 		E505F7692304201100B4FDF1 /* NamaNamaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E505F7682304201100B4FDF1 /* NamaNamaModel.swift */; };
-		E505F76B2304237C00B4FDF1 /* NamaNamaSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E505F76A2304237C00B4FDF1 /* NamaNamaSectionController.swift */; };
 		E505F775230438AA00B4FDF1 /* SwiftKitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E505F774230438AA00B4FDF1 /* SwiftKitController.swift */; };
 		E505F7772304397200B4FDF1 /* SwiftKitNamaNamaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E505F7762304397200B4FDF1 /* SwiftKitNamaNamaModel.swift */; };
-		E505F77923043A1800B4FDF1 /* SwiftKitSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E505F77823043A1800B4FDF1 /* SwiftKitSectionController.swift */; };
 		E523F616230402A50099B9DF /* labelCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E523F614230402A50099B9DF /* labelCollectionViewCell.swift */; };
 		E523F617230402A50099B9DF /* labelCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E523F615230402A50099B9DF /* labelCollectionViewCell.xib */; };
 		E523F619230440D30099B9DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E523F618230440D30099B9DF /* Assets.xcassets */; };
+		E523F61B230448890099B9DF /* SwiftListKitCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E523F61A230448890099B9DF /* SwiftListKitCellNode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,13 +41,12 @@
 		E505F7602303F8FB00B4FDF1 /* Diffable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Diffable.swift; sourceTree = "<group>"; };
 		E505F76523041A7B00B4FDF1 /* IgListKitController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IgListKitController.swift; sourceTree = "<group>"; };
 		E505F7682304201100B4FDF1 /* NamaNamaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NamaNamaModel.swift; sourceTree = "<group>"; };
-		E505F76A2304237C00B4FDF1 /* NamaNamaSectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NamaNamaSectionController.swift; sourceTree = "<group>"; };
 		E505F774230438AA00B4FDF1 /* SwiftKitController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftKitController.swift; sourceTree = "<group>"; };
 		E505F7762304397200B4FDF1 /* SwiftKitNamaNamaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftKitNamaNamaModel.swift; sourceTree = "<group>"; };
-		E505F77823043A1800B4FDF1 /* SwiftKitSectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftKitSectionController.swift; sourceTree = "<group>"; };
 		E523F614230402A50099B9DF /* labelCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = labelCollectionViewCell.swift; sourceTree = "<group>"; };
 		E523F615230402A50099B9DF /* labelCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = labelCollectionViewCell.xib; sourceTree = "<group>"; };
 		E523F618230440D30099B9DF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E523F61A230448890099B9DF /* SwiftListKitCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftListKitCellNode.swift; sourceTree = "<group>"; };
 		F81189E6A57B790848F8A92E /* Pods-DummyIGListKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DummyIGListKit.debug.xcconfig"; path = "Target Support Files/Pods-DummyIGListKit/Pods-DummyIGListKit.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -122,7 +120,7 @@
 				E505F7732304389000B4FDF1 /* Punya Ko Sam */,
 				E505F774230438AA00B4FDF1 /* SwiftKitController.swift */,
 				E505F7762304397200B4FDF1 /* SwiftKitNamaNamaModel.swift */,
-				E505F77823043A1800B4FDF1 /* SwiftKitSectionController.swift */,
+				E523F61A230448890099B9DF /* SwiftListKitCellNode.swift */,
 			);
 			path = SwiftListKit;
 			sourceTree = "<group>";
@@ -132,7 +130,6 @@
 			children = (
 				E505F76523041A7B00B4FDF1 /* IgListKitController.swift */,
 				E505F7682304201100B4FDF1 /* NamaNamaModel.swift */,
-				E505F76A2304237C00B4FDF1 /* NamaNamaSectionController.swift */,
 			);
 			path = IgListKit;
 			sourceTree = "<group>";
@@ -264,11 +261,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E523F61B230448890099B9DF /* SwiftListKitCellNode.swift in Sources */,
 				E523F616230402A50099B9DF /* labelCollectionViewCell.swift in Sources */,
-				E505F77923043A1800B4FDF1 /* SwiftKitSectionController.swift in Sources */,
 				E505F7692304201100B4FDF1 /* NamaNamaModel.swift in Sources */,
 				E505F7642303F8FB00B4FDF1 /* Diffable.swift in Sources */,
-				E505F76B2304237C00B4FDF1 /* NamaNamaSectionController.swift in Sources */,
 				E505F7632303F8FB00B4FDF1 /* SectionController.swift in Sources */,
 				E505F775230438AA00B4FDF1 /* SwiftKitController.swift in Sources */,
 				E505F7622303F8FB00B4FDF1 /* ListCollectionContext+SizeRange.swift in Sources */,

@@ -19,9 +19,3 @@ struct SwiftKitNamaNamaModel {
         self.image = image
     }
 }
-
-extension SwiftKitNamaNamaModel: Diffable, Equatable {
-    var diffIdentifier: String {
-        return id
-    }
-}

@@ -19,8 +19,6 @@ class SwiftKitController: ASViewController<ASDisplayNode> {
         return ListAdapter(updater: ListAdapterUpdater(), viewController: self)
     }()
     
-    private let dataSource = ListSwiftAdapterDataSource()
-    
     private let addButton: ASButtonNode = {
         let node = ASButtonNode()
         node.backgroundColor = UIColor.blue
@@ -76,17 +74,5 @@ class SwiftKitController: ASViewController<ASDisplayNode> {
     
     func configureCollection(){
         adapter.setASDKCollectionNode(collectionNode)
-        adapter.dataSource = dataSource
-        
-        dataSource.itemsBlock = { [weak self] _ in
-            guard let self = self else { return [] }
-            return self.dummyData
-        }
-        
-        dataSource.sectionControllerBlock = { _, _ in
-            return SwiftKitSectionController()
-        }
-        
-        adapter.performUpdates(animated: true, completion: nil)
     }
 }

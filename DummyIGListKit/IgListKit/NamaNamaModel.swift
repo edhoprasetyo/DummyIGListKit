@@ -17,16 +17,3 @@ class NamaNamaModel {
         self.image = image
     }
 }
-
-extension NamaNamaModel: ListDiffable {
-    func diffIdentifier() -> NSObjectProtocol {
-        return namaku as NSString
-    }
-    
-    func isEqual(toDiffableObject object: ListDiffable?) -> Bool {
-        if let object = object as? NamaNamaModel {
-            return namaku == object.namaku
-        }
-        return false
-    }
-}
