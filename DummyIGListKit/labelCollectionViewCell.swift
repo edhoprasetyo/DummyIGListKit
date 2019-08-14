@@ -15,8 +15,8 @@ class labelCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        imageView.layer.cornerRadius = 50
+        imageView.layer.cornerRadius = 25
         imageView.contentMode = .scaleAspectFill
-        backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        backgroundColor = .white
     }
 }

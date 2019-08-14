@@ -13,7 +13,7 @@ class NamaNamaSectionController: ListSectionController {
     
     internal override init() {
         super.init()
-        inset = UIEdgeInsets(top: 0, left: 0, bottom: 8, right: 0)
+        inset = UIEdgeInsets(top: 0, left: 0, bottom: 16, right: 0)
     }
     
     override func numberOfItems() -> Int {
@@ -21,7 +21,7 @@ class NamaNamaSectionController: ListSectionController {
     }
     
     override func sizeForItem(at index: Int) -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.width, height: 100)
+        return CGSize(width: UIScreen.main.bounds.width, height: 50)
     }
     
     override func cellForItem(at index: Int) -> UICollectionViewCell {
