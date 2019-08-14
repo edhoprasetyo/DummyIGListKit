@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GDPerformanceView_Swift
 
 class ViewController: UIViewController {
 
@@ -34,6 +35,7 @@ class ViewController: UIViewController {
         for _ in 0...1000 {
             dummyData += loadMoreData
         }
+        PerformanceMonitor.shared().start()
     }
     
     @objc func addData() {
