@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     
     var dummyData: [String] = []
     
-    let loadMoreData: [String] = [
+    let moreData: [String] = [
         "Alviani",
         "Nicole",
         "Bang James",
@@ -32,21 +32,23 @@ class ViewController: UIViewController {
         
         addButton.addTarget(self, action: #selector(addData), for: .touchDown)
         
-        for _ in 0...1000 {
-            dummyData += loadMoreData
-        }
+        dummyData = moreData
         PerformanceMonitor.shared().start()
     }
     
     @objc func addData() {
-        // reload data
-//        dummyData += loadMoreData
-//        collectionView.reloadData()
-        
-        //perform batch update
+        reloadData()
+    }
+    
+    private func reloadData() {
+        dummyData += moreData
+        collectionView.reloadData()
+    }
+    
+    private func performBatchUpdate() {
         collectionView.performBatchUpdates({
             let oldDataCount = dummyData.count
-            dummyData += loadMoreData
+            dummyData += moreData
             let lastIndexDataCount = dummyData.count - 1
             
             var indexPaths = [IndexPath]()
@@ -56,6 +58,7 @@ class ViewController: UIViewController {
             collectionView.insertItems(at: indexPaths)
         })
     }
+    
 }
 
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
