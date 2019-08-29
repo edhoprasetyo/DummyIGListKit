@@ -12,6 +12,10 @@ class IgListKitController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var addButton: UIButton!
+    
+    lazy var adapter: ListAdapter = {
+       ListAdapter(updater: ListAdapterUpdater(), viewController: self, workingRangeSize: 1)
+    }()
 
     var dummyData: [NamaNamaModel] = [
         NamaNamaModel(namakuadalah: "Alviani", image: #imageLiteral(resourceName: "alviani")),
@@ -22,10 +26,16 @@ class IgListKitController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        adapter.collectionView = collectionView
+        adapter.dataSource = self
     }
     
     @IBAction func onAdd(_ sender: Any) {
         self.insertdata()
+//        self.updateData()
+//        self.moveData()
+//        self.deleteData()
+        adapter.performUpdates(animated: true, completion: nil)
     }
     
     func insertdata(){
@@ -51,5 +61,19 @@ class IgListKitController: UIViewController {
     
     func updateData(){
         dummyData[2] = NamaNamaModel(namakuadalah: "Pace", image: #imageLiteral(resourceName: "pace"))
+    }
+}
+
+extension IgListKitController: ListAdapterDataSource {
+    func objects(for listAdapter: ListAdapter) -> [ListDiffable] {
+        return dummyData
+    }
+    
+    func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
+        return NamaNamaSectionController()
+    }
+    
+    func emptyView(for listAdapter: ListAdapter) -> UIView? {
+        return nil
     }
 }

@@ -1,15 +1,15 @@
 //
-//  SwiftKitNamaNamaModel.swift
+//  testmodelambuy.swift
 //  DummyIGListKit
 //
-//  Created by Edho Prasetyo on 14/08/19.
+//  Created by nakama on 19/08/19.
 //  Copyright © 2019 love. All rights reserved.
 //
 
 import Foundation
 import UIKit
 
-struct SwiftKitNamaNamaModel {
+struct testmodelambuy {
     let id: String
     let namaku: String
     let image: UIImage
@@ -21,8 +21,8 @@ struct SwiftKitNamaNamaModel {
     }
 }
 
-extension SwiftKitNamaNamaModel: Diffable, Equatable {
-
+extension testmodelambuy: Diffable, Equatable {
+    
     var diffIdentifier: String {
         return id
     }

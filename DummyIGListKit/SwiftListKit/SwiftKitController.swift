@@ -19,6 +19,8 @@ class SwiftKitController: ASViewController<ASDisplayNode> {
         return ListAdapter(updater: ListAdapterUpdater(), viewController: self)
     }()
     
+    private let dataSource = ListSwiftAdapterDataSource()
+    
     private let addButton: ASButtonNode = {
         let node = ASButtonNode()
         node.backgroundColor = UIColor.blue
@@ -28,11 +30,11 @@ class SwiftKitController: ASViewController<ASDisplayNode> {
         return node
     }()
     
-    var dummyData: [SwiftKitNamaNamaModel] = [
-        SwiftKitNamaNamaModel(namakuadalah: "Alviani", image: #imageLiteral(resourceName: "alviani")),
-        SwiftKitNamaNamaModel(namakuadalah: "Nicole", image: #imageLiteral(resourceName: "nicole")),
-        SwiftKitNamaNamaModel(namakuadalah: "Bang James", image: #imageLiteral(resourceName: "pace")),
-        SwiftKitNamaNamaModel(namakuadalah: "Bang Nabil", image: #imageLiteral(resourceName: "nabil"))
+    var dummyData: [Diffable] = [
+        SwiftKitNamaNamaModel(id: "1", namakuadalah: "Alviani", image: #imageLiteral(resourceName: "alviani")),
+        SwiftKitNamaNamaModel(id: "2", namakuadalah: "Nicole", image: #imageLiteral(resourceName: "nicole")),
+        SwiftKitNamaNamaModel(id: "3", namakuadalah: "Bang James", image: #imageLiteral(resourceName: "pace")),
+        testmodelambuy(id: "1" ,namakuadalah: "Bang Nabil", image: #imageLiteral(resourceName: "nabil"))
     ]
     
     init() {
@@ -62,17 +64,32 @@ class SwiftKitController: ASViewController<ASDisplayNode> {
     }
     
     func insert(){
-        let moreData: [SwiftKitNamaNamaModel] = [
-            SwiftKitNamaNamaModel(namakuadalah: "Selo", image: #imageLiteral(resourceName: "oles")),
-            SwiftKitNamaNamaModel(namakuadalah: "Melvina", image: #imageLiteral(resourceName: "melvina")),
-            SwiftKitNamaNamaModel(namakuadalah: "Kristabel", image: #imageLiteral(resourceName: "kristabel")),
-            SwiftKitNamaNamaModel(namakuadalah: "Lovinska", image: #imageLiteral(resourceName: "lovinska"))
-        ]
-        
-        dummyData += moreData
+//        let moreData: [SwiftKitNamaNamaModel] = [
+//            SwiftKitNamaNamaModel(namakuadalah: "Selo", image: #imageLiteral(resourceName: "oles")),
+//            SwiftKitNamaNamaModel(namakuadalah: "Melvina", image: #imageLiteral(resourceName: "melvina")),
+//            SwiftKitNamaNamaModel(namakuadalah: "Kristabel", image: #imageLiteral(resourceName: "kristabel")),
+//            SwiftKitNamaNamaModel(namakuadalah: "Lovinska", image: #imageLiteral(resourceName: "lovinska"))
+//        ]
+//
+//        dummyData += moreData
     }
     
     func configureCollection(){
+        adapter.dataSource = dataSource
         adapter.setASDKCollectionNode(collectionNode)
+        
+        dataSource.itemsBlock = { [weak self] _ in
+            guard let self = self else { return [] }
+            return self.dummyData
+        }
+        
+        dataSource.sectionControllerBlock = { _, diffable in
+            switch diffable {
+            case is SwiftKitNamaNamaModel:
+                return SwiftKitNamaNamaSectionController()
+            default:
+                return SectionTest()
+            }
+        }
     }
 }
